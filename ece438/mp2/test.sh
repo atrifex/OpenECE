@@ -35,6 +35,27 @@ do
             exit
             shift; shift; shift;
             ;;
+        --test-fall-back)
+            sh ./scripts/run.sh
+            sleep 5s
+            ./killNodes.sh 1 2
+            sleep 5s
+            ./manager_send 6 send 3 "________FALL BACK________"
+            exit
+            ;;
+        --test-fall-back-new)
+            python ./scripts/generateTopology.py
+            sh ./scripts/run.sh ./topology/ nodecosts networkTopology.txt
+            sleep 5s
+            ./manager_send 1 send 32 "________FALL BACK________"
+            echo "."
+            echo "."
+            echo "."
+            ./killNodes.sh 0
+            sleep 5s
+            ./manager_send 1 send 32 "________FALL BACK________"
+            exit
+            ;;
         --run-default | -r)
             sh ./scripts/run.sh
             exit
