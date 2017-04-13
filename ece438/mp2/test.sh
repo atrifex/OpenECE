@@ -3,6 +3,8 @@ usage(){
         echo "usage: ./test.sh [--help | -h]
                  [--test-default | -t] [--test-gen] [--test-new]
                  [--test-custom <folder> <initcost_prefix> <topofilename>]
+                 [--test-mesg <from> <to>] [--test-mesg-new <from> <to>]
+                 [--test-fb] [--test-fb-new]
                  [--run-default | -r] [--run-gen] [--run-new]
                  [--run-custom <folder> <initcost_prefix> <topofilename>]
                  [--grade-default | -g] [--grade-gen] [--grade-new]
@@ -100,7 +102,7 @@ do
             sh ./scripts/grade.sh 0
             exit
             ;;
-        --grade-gen) 
+        --grade-gen)
             sh ./scripts/run.sh ./topology/ nodecosts networkTopology.txt
             sleep 5s
             sh ./scripts/grade.sh 0
