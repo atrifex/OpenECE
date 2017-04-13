@@ -37,6 +37,19 @@ do
             exit
             shift; shift; shift;
             ;;
+        --test-mesg)
+            sh ./scripts/run.sh
+            sleep 5s
+            ./manager_send $2 send $3 "________MESSAGE________"
+            exit
+            ;;
+        --test-mesg-new)
+            python ./scripts/generateTopology.py
+            sh ./scripts/run.sh ./topology/ nodecosts networkTopology.txt
+            sleep 8s
+            ./manager_send $2 send $3 "________MESSAGE________"
+            exit
+            ;;
         --test-fb)
             sh ./scripts/run.sh
             sleep 5s
@@ -53,6 +66,7 @@ do
             echo "."
             echo "."
             echo "."
+            sleep 5s
             ./killNodes.sh 0
             sleep 5s
             ./manager_send 1 send 32 "________FALL BACK________"
