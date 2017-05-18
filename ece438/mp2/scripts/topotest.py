@@ -4,6 +4,7 @@
 #	sudo apt-get install python-pip
 #	sudo pip install -U pip setuptools
 #	sudo pip install networkx
+# Author: Xuewei Zhang
 
 import sys
 import random
